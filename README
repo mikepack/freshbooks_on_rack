@@ -1,0 +1,6 @@
+This basic Rack app pulls in data from any number of Freshbooks accounts.
+
+Currently, it only aggregates the data and displays the total number of logged ours and the total income on a per-project basis.
+
+I've written a tutorial for creating this app:
+http://www.mikepackdev.com/blog_posts/1-FreshBooks-on-Rack-on-Heroku-Part-One
