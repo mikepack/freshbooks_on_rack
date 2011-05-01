@@ -19,10 +19,7 @@ class FBOnRack
         total_hours = 0.0
 
         connection.time_entry.list(:project_id => project['project_id'])['time_entries']['time_entry'].each do |entry|
-          begin
-            rate = get_rate(connection, project, entry)
-          rescue; next; end
-
+          rate = get_rate(connection, project, entry)
           total_hours += entry['hours'].to_f
           total_income += rate.to_f * entry['hours'].to_f
         end
@@ -54,9 +51,7 @@ private
     when 'project-rate'
       project['rate']
     when 'staff-rate'
-      staff = get_staff(connection, entry['staff_id'])
-      return 0.0 unless staff
-      staff['rate']
+      get_staff(connection, entry['staff_id'])['rate']
     when 'task-rate'
       get_task(connection, entry['task_id'])['rate']
     end
